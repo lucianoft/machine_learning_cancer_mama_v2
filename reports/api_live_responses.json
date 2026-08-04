@@ -1,0 +1,19 @@
+{
+  "health": {
+    "status": "ok",
+    "model_name": "logistic_regression (otimizado via algoritmo genetico)"
+  },
+  "predict": {
+    "predicao": 0,
+    "label": "Benigno",
+    "probabilidade_benigno": 0.9036752769505358,
+    "probabilidade_maligno": 0.09632472304946411
+  },
+  "predict_explain": {
+    "predicao": 0,
+    "label": "Benigno",
+    "probabilidade_benigno": 0.9036752769505358,
+    "probabilidade_maligno": 0.09632472304946411,
+    "explicacao": "O resultado do modelo de classificação indica que a amostra de núcleo celular é provável de ser benigna, com uma probabilidade de 90,4%. Isso sugere que a lesão pode não ser cancerígena. As características mais relevantes da amostra que contribuíram para essa predição incluem a textura média (14,36) e a textura pior (19,26), que podem estar relacionadas à aparência e à estrutura do tecido.\n\nAlém disso, a dimensão fractal média (0,05766) também foi considerada pelo modelo, o que pode indicar a complexidade da estrutura do tecido. Essas características, em conjunto, apontam para uma probabilidade mais alta de a lesão ser benigna. No entanto, é importante notar que a probabilidade de a lesão ser maligna não é zero, com 9,6% de chance.\n\nÉ fundamental lembrar que esse resultado é apenas uma ferramenta de apoio à decisão e não substitui a avaliação médica, mamografia, ultrassonografia nem biopsia. O profissional de saúde tem a palavra final. Ferramenta de apoio a decisao. Nao substitui avaliacao medica, mamografia, ultrassonografia nem biopsia. O profissional de saude tem a palavra final."
+  }
+}

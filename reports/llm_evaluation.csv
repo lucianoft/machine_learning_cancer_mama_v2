@@ -1,0 +1,41 @@
+caso_idx,label_real,label_predito,confianca,explicacao,contem_disclaimer,explicacao_nao_vazia,clareza_1_a_5,correcao_clinica_1_a_5
+190,Maligno,Maligno,0.5258911940819793,"O resultado do modelo de classificação indica que a amostra é provável de ser maligna, com uma probabilidade de 52,6% de ser cancerosa e 47,4% de ser benigna. Isso sugere que o modelo tem uma ligeira inclinação para considerar a amostra como maligna, mas não é uma conclusão definitiva.
+
+Algumas das medidas mais relevantes da amostra que contribuíram para essa predição incluem o erro de compactação (0,1354), a pior simetria (0,5166) e a pior dimensão fractal (0,1446). Essas medidas sugerem que a amostra apresenta algumas características que são comuns em tumores malignos, como uma forma irregular e uma estrutura celular desorganizada.
+
+É importante lembrar que esse resultado é apenas uma ferramenta de apoio à decisão e não substitui a avaliação médica. Portanto, é fundamental considerar outros exames e avaliações para obter um diagnóstico preciso. Ferramenta de apoio a decisao. Nao substitui avaliacao medica, mamografia, ultrassonografia nem biopsia. O profissional de saude tem a palavra final.",True,True,,
+205,Maligno,Maligno,0.5502310188233813,"O resultado do modelo de classificação indica que a amostra é mais provável de ser maligna, com uma probabilidade de 55,0% em relação a 45,0% de ser benigna. Isso sugere que o modelo encontrou características que estão mais alinhadas com padrões de câncer de mama maligno.
+
+Algumas das medidas mais relevantes da amostra que contribuíram para essa predição incluem a ""worst texture"" com um valor de 20,24, o que pode indicar uma textura mais irregular, e a ""worst symmetry"" com um valor de 0,3415, o que pode sugerir uma assimetria mais acentuada. Além disso, a ""texture error"" de 0,3621 também foi considerada.
+
+É importante lembrar que essa predição é baseada em um modelo de machine learning e deve ser considerada como uma ferramenta de apoio à decisão. Ferramenta de apoio a decisao. Nao substitui avaliacao medica, mamografia, ultrassonografia nem biopsia. O profissional de saude tem a palavra final.",True,True,,
+455,Benigno,Maligno,0.6047444942800732,"O modelo de classificação prevê que a amostra é maligna, com uma probabilidade de 60,5% de ser cancerosa e 39,5% de ser benigna. Isso sugere que o modelo tem uma inclinação ligeira para considerar a amostra como cancerosa, mas não é uma certeza.
+
+Algumas das características mais relevantes da amostra que contribuíram para essa previsão incluem a textura média (mean texture) de 30,72, a textura pior (worst texture) de 41,61 e a simetria média (mean symmetry) de 0,1375. Essas medidas sugerem que a amostra apresenta algumas características que podem estar associadas a tumores malignos.
+
+É importante lembrar que essa previsão é apenas uma ferramenta de apoio à decisão e não substitui a avaliação médica, mamografia, ultrassonografia nem biopsia. O profissional de saúde tem a palavra final. Ferramenta de apoio a decisao. Nao substitui avaliacao medica, mamografia, ultrassonografia nem biopsia. O profissional de saude tem a palavra final.",True,True,,
+456,Benigno,Benigno,0.6677599920590748,"O resultado do modelo de classificação indica que a amostra é provável de ser benigna, com uma probabilidade de 66,8% de ser um tumor não cancerígeno e 33,2% de ser maligno. Isso sugere que, com base nas características da amostra, é mais provável que o tumor seja benigno, mas não é uma certeza.
+
+As características mais relevantes da amostra que contribuíram para essa predição incluem a textura média (mean texture) de 29,29, o erro de textura (texture error) de 2,426 e o pior valor de textura (worst texture) de 38,81. Esses valores podem indicar uma certa heterogeneidade na estrutura do tumor, mas não são suficientes para confirmar a presença de câncer.
+
+É importante lembrar que essa é apenas uma ferramenta de apoio à decisão e não substitui a avaliação médica, mamografia, ultrassonografia nem biopsia. O profissional de saúde tem a palavra final. Ferramenta de apoio a decisao. Nao substitui avaliacao medica, mamografia, ultrassonografia nem biopsia. O profissional de saude tem a palavra final.",True,True,,
+393,Maligno,Maligno,0.9999999516135688,"O modelo de classificação prevê que a amostra é maligna, com uma probabilidade de 100,0%. Isso sugere que as características da amostra apresentam fortes indícios de câncer de mama. 
+
+Algumas das medidas mais relevantes que contribuíram para essa previsão incluem o ""mean concave points"" (0,1562), que pode indicar irregularidades na forma do núcleo celular, e o ""mean concavity"" (0,281), que pode sugerir uma concavidade anormal. Além disso, o ""mean perimeter"" (144,4) também foi considerado, o que pode estar relacionado ao tamanho e à forma da célula.
+
+Esses resultados devem ser considerados como uma ferramenta de apoio à decisão. É importante lembrar que a avaliação médica, mamografia, ultrassonografia e biópsia são fundamentais para um diagnóstico preciso. Ferramenta de apoio a decisao. Nao substitui avaliacao medica, mamografia, ultrassonografia nem biopsia. O profissional de saude tem a palavra final.",True,True,,
+219,Maligno,Maligno,0.999999964399429,"O resultado do modelo de classificação indica que a amostra é provável de ser maligna, com uma probabilidade de 100,0%. Isso sugere que as características da amostra apresentam padrões consistentes com câncer de mama. 
+
+Algumas das medidas mais relevantes da amostra incluem a textura pior (worst texture) com valor de 45,41, a área pior (worst area) com valor de 2477 e o raio pior (worst radius) com valor de 27,9. Essas características são importantes para a avaliação da probabilidade de malignidade.
+
+Ferramenta de apoio a decisao. Nao substitui avaliacao medica, mamografia, ultrassonografia nem biopsia. O profissional de saude tem a palavra final.",True,True,,
+563,Maligno,Maligno,0.9999999906298754,"O resultado do modelo de classificação indica que a amostra é provável de ser maligna, com uma probabilidade de 100,0%. Isso sugere que as características da amostra apresentam padrões consistentes com tumores cancerígenos.
+
+Algumas das medidas mais relevantes que contribuíram para essa predição incluem a concavidade média (mean concavity) de 0,3174, o erro de perímetro (perimeter error) de 8,758 e a média de pontos côncavos (mean concave points) de 0,1474. Essas características sugerem uma forma irregular e complexa, o que é comum em lesões malignas.
+
+É importante lembrar que esse resultado é uma ferramenta de apoio à decisão e não substitui a avaliação médica. Portanto, é fundamental considerar outros exames e avaliações clínicas para confirmar o diagnóstico. Ferramenta de apoio a decisao. Nao substitui avaliacao medica, mamografia, ultrassonografia nem biopsia. O profissional de saude tem a palavra final.",True,True,,
+503,Maligno,Maligno,0.9999999990314703,"O modelo de classificação prevê que a amostra é maligna, com uma probabilidade de 100,0%. Isso sugere que as características observadas na amostra são altamente indicativas de um tumor maligno. 
+
+Entre as medidas mais relevantes da amostra, destacam-se o ""worst area"" com um valor de 2782, o ""worst perimeter"" com 211,5 e o ""worst radius"" com 30,79. Esses valores sugerem que a forma e o tamanho do núcleo celular apresentam características anormais, que podem estar relacionadas ao crescimento descontrolado de células malignas.
+
+É importante lembrar que essa previsão é baseada em um modelo de machine learning e não substitui a avaliação médica profissional. Portanto, é fundamental que o profissional de saúde considere esses resultados como uma ferramenta de apoio à decisão, mas não como a única base para o diagnóstico. Ferramenta de apoio a decisao. Nao substitui avaliacao medica, mamografia, ultrassonografia nem biopsia. O profissional de saude tem a palavra final.",True,True,,

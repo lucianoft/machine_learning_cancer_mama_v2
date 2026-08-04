@@ -1,0 +1,9 @@
+{
+  "predict_explain_maligno": {
+    "predicao": 1,
+    "label": "Maligno",
+    "probabilidade_benigno": 9.913034981767765e-08,
+    "probabilidade_maligno": 0.9999999008696502,
+    "explicacao": "O resultado do modelo de classificação indica que a amostra é provável de ser maligna, com uma probabilidade de 100,0%. Isso sugere que as características da amostra apresentam padrões consistentes com tumores cancerígenos.\n\nAlgumas das medidas mais relevantes da amostra que contribuíram para essa predição incluem a \"worst symmetry\" (0,4601), que pode indicar uma forma irregular do núcleo celular, e a \"worst compactness\" (0,6656), que pode sugerir uma densidade celular anormal. Além disso, a \"mean concavity\" (0,3001) também foi considerada, o que pode indicar uma invaginação ou retração na forma do núcleo.\n\nÉ importante lembrar que esse resultado é apenas uma ferramenta de apoio à decisão e não substitui a avaliação médica. Ferramenta de apoio a decisao. Nao substitui avaliacao medica, mamografia, ultrassonografia nem biopsia. O profissional de saude tem a palavra final."
+  }
+}

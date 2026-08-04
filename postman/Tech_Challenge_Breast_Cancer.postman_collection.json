@@ -1,0 +1,448 @@
+{
+  "info": {
+    "_postman_id": "b1c2d3e4-breast-cancer-api",
+    "name": "Tech Challenge — Câncer de Mama (API)",
+    "description": "API REST — classificação **benigno/maligno** (Breast Cancer Wisconsin).\n\n## Como preencher os campos\n\n1. **Collection Variables** — clique na collection → aba **Variables**. Cada `v_*` corresponde a um campo do JSON, com **descrição** e valor de exemplo.\n2. Request **Predict — editar variáveis** — usa essas variáveis no body.\n3. Requests **exemplo benigno/maligno** — valores fixos do dataset.\n4. Request **template** — todos os 30 campos com `0.0` para você substituir.\n\n**Pré-requisito:** `docker compose up --build`\n\n| Campo JSON | Descrição |\n|------------|----------|\n| `mean radius` | Raio médio — média das distâncias do centro ao perímetro do núcleo |\n| `mean texture` | Textura média — desvio padrão dos tons de cinza |\n| `mean perimeter` | Perímetro médio do núcleo |\n| `mean area` | Área média do núcleo |\n| `mean smoothness` | Suavidade média — variação local do raio |\n| `mean compactness` | Compacidade média — (perímetro² / área) − 1 |\n| `mean concavity` | Concavidade média — severidade das porções côncavas |\n| `mean concave points` | Pontos côncavos médios |\n| `mean symmetry` | Simetria média do núcleo |\n| `mean fractal dimension` | Dimensão fractal média do contorno |\n| `radius error` | Erro padrão do raio |\n| `texture error` | Erro padrão da textura |\n| `perimeter error` | Erro padrão do perímetro |\n| `area error` | Erro padrão da área |\n| `smoothness error` | Erro padrão da suavidade |\n| `compactness error` | Erro padrão da compacidade |\n| `concavity error` | Erro padrão da concavidade |\n| `concave points error` | Erro padrão dos pontos côncavos |\n| `symmetry error` | Erro padrão da simetria |\n| `fractal dimension error` | Erro padrão da dimensão fractal |\n| `worst radius` | Pior raio — média dos 3 maiores valores |\n| `worst texture` | Pior textura — média dos 3 maiores valores |\n| `worst perimeter` | Pior perímetro — média dos 3 maiores valores |\n| `worst area` | Pior área — média dos 3 maiores valores |\n| `worst smoothness` | Pior suavidade — média dos 3 maiores valores |\n| `worst compactness` | Pior compacidade — média dos 3 maiores valores |\n| `worst concavity` | Pior concavidade — média dos 3 maiores valores |\n| `worst concave points` | Pior pontos côncavos — média dos 3 maiores valores |\n| `worst symmetry` | Pior simetria — média dos 3 maiores valores |\n| `worst fractal dimension` | Pior dimensão fractal — média dos 3 maiores valores |",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "description": "URL base da API"
+    },
+    {
+      "key": "v_mean_radius",
+      "value": "13.54",
+      "description": "mean radius — Raio médio — média das distâncias do centro ao perímetro do núcleo"
+    },
+    {
+      "key": "v_mean_texture",
+      "value": "14.36",
+      "description": "mean texture — Textura média — desvio padrão dos tons de cinza"
+    },
+    {
+      "key": "v_mean_perimeter",
+      "value": "87.46",
+      "description": "mean perimeter — Perímetro médio do núcleo"
+    },
+    {
+      "key": "v_mean_area",
+      "value": "566.3",
+      "description": "mean area — Área média do núcleo"
+    },
+    {
+      "key": "v_mean_smoothness",
+      "value": "0.09779",
+      "description": "mean smoothness — Suavidade média — variação local do raio"
+    },
+    {
+      "key": "v_mean_compactness",
+      "value": "0.08129",
+      "description": "mean compactness — Compacidade média — (perímetro² / área) − 1"
+    },
+    {
+      "key": "v_mean_concavity",
+      "value": "0.06664",
+      "description": "mean concavity — Concavidade média — severidade das porções côncavas"
+    },
+    {
+      "key": "v_mean_concave_points",
+      "value": "0.04781",
+      "description": "mean concave points — Pontos côncavos médios"
+    },
+    {
+      "key": "v_mean_symmetry",
+      "value": "0.1885",
+      "description": "mean symmetry — Simetria média do núcleo"
+    },
+    {
+      "key": "v_mean_fractal_dimension",
+      "value": "0.05766",
+      "description": "mean fractal dimension — Dimensão fractal média do contorno"
+    },
+    {
+      "key": "v_radius_error",
+      "value": "0.2699",
+      "description": "radius error — Erro padrão do raio"
+    },
+    {
+      "key": "v_texture_error",
+      "value": "0.7886",
+      "description": "texture error — Erro padrão da textura"
+    },
+    {
+      "key": "v_perimeter_error",
+      "value": "2.058",
+      "description": "perimeter error — Erro padrão do perímetro"
+    },
+    {
+      "key": "v_area_error",
+      "value": "23.56",
+      "description": "area error — Erro padrão da área"
+    },
+    {
+      "key": "v_smoothness_error",
+      "value": "0.008462",
+      "description": "smoothness error — Erro padrão da suavidade"
+    },
+    {
+      "key": "v_compactness_error",
+      "value": "0.0146",
+      "description": "compactness error — Erro padrão da compacidade"
+    },
+    {
+      "key": "v_concavity_error",
+      "value": "0.02387",
+      "description": "concavity error — Erro padrão da concavidade"
+    },
+    {
+      "key": "v_concave_points_error",
+      "value": "0.01315",
+      "description": "concave points error — Erro padrão dos pontos côncavos"
+    },
+    {
+      "key": "v_symmetry_error",
+      "value": "0.0198",
+      "description": "symmetry error — Erro padrão da simetria"
+    },
+    {
+      "key": "v_fractal_dimension_error",
+      "value": "0.0023",
+      "description": "fractal dimension error — Erro padrão da dimensão fractal"
+    },
+    {
+      "key": "v_worst_radius",
+      "value": "15.11",
+      "description": "worst radius — Pior raio — média dos 3 maiores valores"
+    },
+    {
+      "key": "v_worst_texture",
+      "value": "19.26",
+      "description": "worst texture — Pior textura — média dos 3 maiores valores"
+    },
+    {
+      "key": "v_worst_perimeter",
+      "value": "99.7",
+      "description": "worst perimeter — Pior perímetro — média dos 3 maiores valores"
+    },
+    {
+      "key": "v_worst_area",
+      "value": "711.2",
+      "description": "worst area — Pior área — média dos 3 maiores valores"
+    },
+    {
+      "key": "v_worst_smoothness",
+      "value": "0.144",
+      "description": "worst smoothness — Pior suavidade — média dos 3 maiores valores"
+    },
+    {
+      "key": "v_worst_compactness",
+      "value": "0.1773",
+      "description": "worst compactness — Pior compacidade — média dos 3 maiores valores"
+    },
+    {
+      "key": "v_worst_concavity",
+      "value": "0.239",
+      "description": "worst concavity — Pior concavidade — média dos 3 maiores valores"
+    },
+    {
+      "key": "v_worst_concave_points",
+      "value": "0.1288",
+      "description": "worst concave points — Pior pontos côncavos — média dos 3 maiores valores"
+    },
+    {
+      "key": "v_worst_symmetry",
+      "value": "0.2977",
+      "description": "worst symmetry — Pior simetria — média dos 3 maiores valores"
+    },
+    {
+      "key": "v_worst_fractal_dimension",
+      "value": "0.07259",
+      "description": "worst fractal dimension — Pior dimensão fractal — média dos 3 maiores valores"
+    }
+  ],
+  "item": [
+    {
+      "name": "Sistema",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Verifica se a API e o modelo estão carregados."
+          }
+        },
+        {
+          "name": "Metadata",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/metadata",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "metadata"
+              ]
+            },
+            "description": "Retorna `feature_columns` (lista dos 30 campos), `target_column` e `target_labels`."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Referência — campos obrigatórios",
+      "description": "Documentação dos 30 campos do POST /predict. Veja também **Collection Variables**.",
+      "item": [
+        {
+          "name": "Lista de campos (documentação)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/metadata",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "metadata"
+              ]
+            },
+            "description": "Envia **30 medidas numéricas** de núcleos celulares (PAAF).\n\n**Não envie:** `id`, `diagnosis` — apenas as features de entrada.\n\n**Resposta:** `predicao` (0=benigno, 1=maligno), `label`, `probabilidade_benigno`, `probabilidade_maligno`.\n\n| Campo JSON | Descrição |\n|------------|----------|\n| `mean radius` | Raio médio — média das distâncias do centro ao perímetro do núcleo |\n| `mean texture` | Textura média — desvio padrão dos tons de cinza |\n| `mean perimeter` | Perímetro médio do núcleo |\n| `mean area` | Área média do núcleo |\n| `mean smoothness` | Suavidade média — variação local do raio |\n| `mean compactness` | Compacidade média — (perímetro² / área) − 1 |\n| `mean concavity` | Concavidade média — severidade das porções côncavas |\n| `mean concave points` | Pontos côncavos médios |\n| `mean symmetry` | Simetria média do núcleo |\n| `mean fractal dimension` | Dimensão fractal média do contorno |\n| `radius error` | Erro padrão do raio |\n| `texture error` | Erro padrão da textura |\n| `perimeter error` | Erro padrão do perímetro |\n| `area error` | Erro padrão da área |\n| `smoothness error` | Erro padrão da suavidade |\n| `compactness error` | Erro padrão da compacidade |\n| `concavity error` | Erro padrão da concavidade |\n| `concave points error` | Erro padrão dos pontos côncavos |\n| `symmetry error` | Erro padrão da simetria |\n| `fractal dimension error` | Erro padrão da dimensão fractal |\n| `worst radius` | Pior raio — média dos 3 maiores valores |\n| `worst texture` | Pior textura — média dos 3 maiores valores |\n| `worst perimeter` | Pior perímetro — média dos 3 maiores valores |\n| `worst area` | Pior área — média dos 3 maiores valores |\n| `worst smoothness` | Pior suavidade — média dos 3 maiores valores |\n| `worst compactness` | Pior compacidade — média dos 3 maiores valores |\n| `worst concavity` | Pior concavidade — média dos 3 maiores valores |\n| `worst concave points` | Pior pontos côncavos — média dos 3 maiores valores |\n| `worst symmetry` | Pior simetria — média dos 3 maiores valores |\n| `worst fractal dimension` | Pior dimensão fractal — média dos 3 maiores valores |\n\n**Dica:** execute **Metadata** para ver `feature_columns` em tempo real."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Predição — câncer de mama",
+      "description": "Envia **30 medidas numéricas** de núcleos celulares (PAAF).\n\n**Não envie:** `id`, `diagnosis` — apenas as features de entrada.\n\n**Resposta:** `predicao` (0=benigno, 1=maligno), `label`, `probabilidade_benigno`, `probabilidade_maligno`.\n\n| Campo JSON | Descrição |\n|------------|----------|\n| `mean radius` | Raio médio — média das distâncias do centro ao perímetro do núcleo |\n| `mean texture` | Textura média — desvio padrão dos tons de cinza |\n| `mean perimeter` | Perímetro médio do núcleo |\n| `mean area` | Área média do núcleo |\n| `mean smoothness` | Suavidade média — variação local do raio |\n| `mean compactness` | Compacidade média — (perímetro² / área) − 1 |\n| `mean concavity` | Concavidade média — severidade das porções côncavas |\n| `mean concave points` | Pontos côncavos médios |\n| `mean symmetry` | Simetria média do núcleo |\n| `mean fractal dimension` | Dimensão fractal média do contorno |\n| `radius error` | Erro padrão do raio |\n| `texture error` | Erro padrão da textura |\n| `perimeter error` | Erro padrão do perímetro |\n| `area error` | Erro padrão da área |\n| `smoothness error` | Erro padrão da suavidade |\n| `compactness error` | Erro padrão da compacidade |\n| `concavity error` | Erro padrão da concavidade |\n| `concave points error` | Erro padrão dos pontos côncavos |\n| `symmetry error` | Erro padrão da simetria |\n| `fractal dimension error` | Erro padrão da dimensão fractal |\n| `worst radius` | Pior raio — média dos 3 maiores valores |\n| `worst texture` | Pior textura — média dos 3 maiores valores |\n| `worst perimeter` | Pior perímetro — média dos 3 maiores valores |\n| `worst area` | Pior área — média dos 3 maiores valores |\n| `worst smoothness` | Pior suavidade — média dos 3 maiores valores |\n| `worst compactness` | Pior compacidade — média dos 3 maiores valores |\n| `worst concavity` | Pior concavidade — média dos 3 maiores valores |\n| `worst concave points` | Pior pontos côncavos — média dos 3 maiores valores |\n| `worst symmetry` | Pior simetria — média dos 3 maiores valores |\n| `worst fractal dimension` | Pior dimensão fractal — média dos 3 maiores valores |",
+      "item": [
+        {
+          "name": "Predict — editar variáveis (recomendado)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"patient\": {\n    \"mean radius\": {{ v_mean_radius }},\n    \"mean texture\": {{ v_mean_texture }},\n    \"mean perimeter\": {{ v_mean_perimeter }},\n    \"mean area\": {{ v_mean_area }},\n    \"mean smoothness\": {{ v_mean_smoothness }},\n    \"mean compactness\": {{ v_mean_compactness }},\n    \"mean concavity\": {{ v_mean_concavity }},\n    \"mean concave points\": {{ v_mean_concave_points }},\n    \"mean symmetry\": {{ v_mean_symmetry }},\n    \"mean fractal dimension\": {{ v_mean_fractal_dimension }},\n    \"radius error\": {{ v_radius_error }},\n    \"texture error\": {{ v_texture_error }},\n    \"perimeter error\": {{ v_perimeter_error }},\n    \"area error\": {{ v_area_error }},\n    \"smoothness error\": {{ v_smoothness_error }},\n    \"compactness error\": {{ v_compactness_error }},\n    \"concavity error\": {{ v_concavity_error }},\n    \"concave points error\": {{ v_concave_points_error }},\n    \"symmetry error\": {{ v_symmetry_error }},\n    \"fractal dimension error\": {{ v_fractal_dimension_error }},\n    \"worst radius\": {{ v_worst_radius }},\n    \"worst texture\": {{ v_worst_texture }},\n    \"worst perimeter\": {{ v_worst_perimeter }},\n    \"worst area\": {{ v_worst_area }},\n    \"worst smoothness\": {{ v_worst_smoothness }},\n    \"worst compactness\": {{ v_worst_compactness }},\n    \"worst concavity\": {{ v_worst_concavity }},\n    \"worst concave points\": {{ v_worst_concave_points }},\n    \"worst symmetry\": {{ v_worst_symmetry }},\n    \"worst fractal dimension\": {{ v_worst_fractal_dimension }}\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "predict"
+              ]
+            },
+            "description": "Usa **Collection Variables** (`v_mean_radius`, `v_mean_texture`, …). Edite em *Collection → Variables* — cada variável tem a descrição do campo.\n\n| Campo JSON | Descrição |\n|------------|----------|\n| `mean radius` | Raio médio — média das distâncias do centro ao perímetro do núcleo |\n| `mean texture` | Textura média — desvio padrão dos tons de cinza |\n| `mean perimeter` | Perímetro médio do núcleo |\n| `mean area` | Área média do núcleo |\n| `mean smoothness` | Suavidade média — variação local do raio |\n| `mean compactness` | Compacidade média — (perímetro² / área) − 1 |\n| `mean concavity` | Concavidade média — severidade das porções côncavas |\n| `mean concave points` | Pontos côncavos médios |\n| `mean symmetry` | Simetria média do núcleo |\n| `mean fractal dimension` | Dimensão fractal média do contorno |\n| `radius error` | Erro padrão do raio |\n| `texture error` | Erro padrão da textura |\n| `perimeter error` | Erro padrão do perímetro |\n| `area error` | Erro padrão da área |\n| `smoothness error` | Erro padrão da suavidade |\n| `compactness error` | Erro padrão da compacidade |\n| `concavity error` | Erro padrão da concavidade |\n| `concave points error` | Erro padrão dos pontos côncavos |\n| `symmetry error` | Erro padrão da simetria |\n| `fractal dimension error` | Erro padrão da dimensão fractal |\n| `worst radius` | Pior raio — média dos 3 maiores valores |\n| `worst texture` | Pior textura — média dos 3 maiores valores |\n| `worst perimeter` | Pior perímetro — média dos 3 maiores valores |\n| `worst area` | Pior área — média dos 3 maiores valores |\n| `worst smoothness` | Pior suavidade — média dos 3 maiores valores |\n| `worst compactness` | Pior compacidade — média dos 3 maiores valores |\n| `worst concavity` | Pior concavidade — média dos 3 maiores valores |\n| `worst concave points` | Pior pontos côncavos — média dos 3 maiores valores |\n| `worst symmetry` | Pior simetria — média dos 3 maiores valores |\n| `worst fractal dimension` | Pior dimensão fractal — média dos 3 maiores valores |"
+          },
+          "response": [
+            {
+              "name": "200 - Exemplo de resposta",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"predicao\": 0,\n  \"label\": \"Benigno\",\n  \"probabilidade_benigno\": 0.9092,\n  \"probabilidade_maligno\": 0.0908\n}"
+            }
+          ]
+        },
+        {
+          "name": "Predict + Explicação (LLM)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"patient\": {\n    \"mean radius\": {{ v_mean_radius }},\n    \"mean texture\": {{ v_mean_texture }},\n    \"mean perimeter\": {{ v_mean_perimeter }},\n    \"mean area\": {{ v_mean_area }},\n    \"mean smoothness\": {{ v_mean_smoothness }},\n    \"mean compactness\": {{ v_mean_compactness }},\n    \"mean concavity\": {{ v_mean_concavity }},\n    \"mean concave points\": {{ v_mean_concave_points }},\n    \"mean symmetry\": {{ v_mean_symmetry }},\n    \"mean fractal dimension\": {{ v_mean_fractal_dimension }},\n    \"radius error\": {{ v_radius_error }},\n    \"texture error\": {{ v_texture_error }},\n    \"perimeter error\": {{ v_perimeter_error }},\n    \"area error\": {{ v_area_error }},\n    \"smoothness error\": {{ v_smoothness_error }},\n    \"compactness error\": {{ v_compactness_error }},\n    \"concavity error\": {{ v_concavity_error }},\n    \"concave points error\": {{ v_concave_points_error }},\n    \"symmetry error\": {{ v_symmetry_error }},\n    \"fractal dimension error\": {{ v_fractal_dimension_error }},\n    \"worst radius\": {{ v_worst_radius }},\n    \"worst texture\": {{ v_worst_texture }},\n    \"worst perimeter\": {{ v_worst_perimeter }},\n    \"worst area\": {{ v_worst_area }},\n    \"worst smoothness\": {{ v_worst_smoothness }},\n    \"worst compactness\": {{ v_worst_compactness }},\n    \"worst concavity\": {{ v_worst_concavity }},\n    \"worst concave points\": {{ v_worst_concave_points }},\n    \"worst symmetry\": {{ v_worst_symmetry }},\n    \"worst fractal dimension\": {{ v_worst_fractal_dimension }}\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/predict/explain",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "predict",
+                "explain"
+              ]
+            },
+            "description": "Mesmo corpo do Predict, mas devolve também `explicacao` (texto gerado pela LLM configurada em LLM_PROVIDER — ver .env.example). Requer GROQ_API_KEY ou OPENAI_API_KEY configurada na API."
+          }
+        },
+        {
+          "name": "Predict — exemplo benigno",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"patient\": {\n    \"mean radius\": 13.54,\n    \"mean texture\": 14.36,\n    \"mean perimeter\": 87.46,\n    \"mean area\": 566.3,\n    \"mean smoothness\": 0.09779,\n    \"mean compactness\": 0.08129,\n    \"mean concavity\": 0.06664,\n    \"mean concave points\": 0.04781,\n    \"mean symmetry\": 0.1885,\n    \"mean fractal dimension\": 0.05766,\n    \"radius error\": 0.2699,\n    \"texture error\": 0.7886,\n    \"perimeter error\": 2.058,\n    \"area error\": 23.56,\n    \"smoothness error\": 0.008462,\n    \"compactness error\": 0.0146,\n    \"concavity error\": 0.02387,\n    \"concave points error\": 0.01315,\n    \"symmetry error\": 0.0198,\n    \"fractal dimension error\": 0.0023,\n    \"worst radius\": 15.11,\n    \"worst texture\": 19.26,\n    \"worst perimeter\": 99.7,\n    \"worst area\": 711.2,\n    \"worst smoothness\": 0.144,\n    \"worst compactness\": 0.1773,\n    \"worst concavity\": 0.239,\n    \"worst concave points\": 0.1288,\n    \"worst symmetry\": 0.2977,\n    \"worst fractal dimension\": 0.07259\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "predict"
+              ]
+            },
+            "description": "Valores reais de amostra **benigna** do dataset Wisconsin.\n\n| Campo JSON | Descrição |\n|------------|----------|\n| `mean radius` | Raio médio — média das distâncias do centro ao perímetro do núcleo |\n| `mean texture` | Textura média — desvio padrão dos tons de cinza |\n| `mean perimeter` | Perímetro médio do núcleo |\n| `mean area` | Área média do núcleo |\n| `mean smoothness` | Suavidade média — variação local do raio |\n| `mean compactness` | Compacidade média — (perímetro² / área) − 1 |\n| `mean concavity` | Concavidade média — severidade das porções côncavas |\n| `mean concave points` | Pontos côncavos médios |\n| `mean symmetry` | Simetria média do núcleo |\n| `mean fractal dimension` | Dimensão fractal média do contorno |\n| `radius error` | Erro padrão do raio |\n| `texture error` | Erro padrão da textura |\n| `perimeter error` | Erro padrão do perímetro |\n| `area error` | Erro padrão da área |\n| `smoothness error` | Erro padrão da suavidade |\n| `compactness error` | Erro padrão da compacidade |\n| `concavity error` | Erro padrão da concavidade |\n| `concave points error` | Erro padrão dos pontos côncavos |\n| `symmetry error` | Erro padrão da simetria |\n| `fractal dimension error` | Erro padrão da dimensão fractal |\n| `worst radius` | Pior raio — média dos 3 maiores valores |\n| `worst texture` | Pior textura — média dos 3 maiores valores |\n| `worst perimeter` | Pior perímetro — média dos 3 maiores valores |\n| `worst area` | Pior área — média dos 3 maiores valores |\n| `worst smoothness` | Pior suavidade — média dos 3 maiores valores |\n| `worst compactness` | Pior compacidade — média dos 3 maiores valores |\n| `worst concavity` | Pior concavidade — média dos 3 maiores valores |\n| `worst concave points` | Pior pontos côncavos — média dos 3 maiores valores |\n| `worst symmetry` | Pior simetria — média dos 3 maiores valores |\n| `worst fractal dimension` | Pior dimensão fractal — média dos 3 maiores valores |"
+          },
+          "response": [
+            {
+              "name": "200 - Exemplo de resposta",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"predicao\": 0,\n  \"label\": \"Benigno\",\n  \"probabilidade_benigno\": 0.9092,\n  \"probabilidade_maligno\": 0.0908\n}"
+            }
+          ]
+        },
+        {
+          "name": "Predict — exemplo maligno",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"patient\": {\n    \"mean radius\": 17.99,\n    \"mean texture\": 10.38,\n    \"mean perimeter\": 122.8,\n    \"mean area\": 1001.0,\n    \"mean smoothness\": 0.1184,\n    \"mean compactness\": 0.2776,\n    \"mean concavity\": 0.3001,\n    \"mean concave points\": 0.1471,\n    \"mean symmetry\": 0.2419,\n    \"mean fractal dimension\": 0.07871,\n    \"radius error\": 1.095,\n    \"texture error\": 0.9053,\n    \"perimeter error\": 8.589,\n    \"area error\": 153.4,\n    \"smoothness error\": 0.006399,\n    \"compactness error\": 0.04904,\n    \"concavity error\": 0.05373,\n    \"concave points error\": 0.01587,\n    \"symmetry error\": 0.03003,\n    \"fractal dimension error\": 0.006193,\n    \"worst radius\": 25.38,\n    \"worst texture\": 17.33,\n    \"worst perimeter\": 184.6,\n    \"worst area\": 2019.0,\n    \"worst smoothness\": 0.1622,\n    \"worst compactness\": 0.6656,\n    \"worst concavity\": 0.7119,\n    \"worst concave points\": 0.2654,\n    \"worst symmetry\": 0.4601,\n    \"worst fractal dimension\": 0.1189\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "predict"
+              ]
+            },
+            "description": "Valores reais de amostra **maligna** do dataset Wisconsin.\n\n| Campo JSON | Descrição |\n|------------|----------|\n| `mean radius` | Raio médio — média das distâncias do centro ao perímetro do núcleo |\n| `mean texture` | Textura média — desvio padrão dos tons de cinza |\n| `mean perimeter` | Perímetro médio do núcleo |\n| `mean area` | Área média do núcleo |\n| `mean smoothness` | Suavidade média — variação local do raio |\n| `mean compactness` | Compacidade média — (perímetro² / área) − 1 |\n| `mean concavity` | Concavidade média — severidade das porções côncavas |\n| `mean concave points` | Pontos côncavos médios |\n| `mean symmetry` | Simetria média do núcleo |\n| `mean fractal dimension` | Dimensão fractal média do contorno |\n| `radius error` | Erro padrão do raio |\n| `texture error` | Erro padrão da textura |\n| `perimeter error` | Erro padrão do perímetro |\n| `area error` | Erro padrão da área |\n| `smoothness error` | Erro padrão da suavidade |\n| `compactness error` | Erro padrão da compacidade |\n| `concavity error` | Erro padrão da concavidade |\n| `concave points error` | Erro padrão dos pontos côncavos |\n| `symmetry error` | Erro padrão da simetria |\n| `fractal dimension error` | Erro padrão da dimensão fractal |\n| `worst radius` | Pior raio — média dos 3 maiores valores |\n| `worst texture` | Pior textura — média dos 3 maiores valores |\n| `worst perimeter` | Pior perímetro — média dos 3 maiores valores |\n| `worst area` | Pior área — média dos 3 maiores valores |\n| `worst smoothness` | Pior suavidade — média dos 3 maiores valores |\n| `worst compactness` | Pior compacidade — média dos 3 maiores valores |\n| `worst concavity` | Pior concavidade — média dos 3 maiores valores |\n| `worst concave points` | Pior pontos côncavos — média dos 3 maiores valores |\n| `worst symmetry` | Pior simetria — média dos 3 maiores valores |\n| `worst fractal dimension` | Pior dimensão fractal — média dos 3 maiores valores |"
+          },
+          "response": [
+            {
+              "name": "200 - Exemplo de resposta",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"predicao\": 0,\n  \"label\": \"Benigno\",\n  \"probabilidade_benigno\": 0.9092,\n  \"probabilidade_maligno\": 0.0908\n}"
+            }
+          ]
+        },
+        {
+          "name": "Predict — template (substituir zeros)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"patient\": {\n    \"mean radius\": 0.0,\n    \"mean texture\": 0.0,\n    \"mean perimeter\": 0.0,\n    \"mean area\": 0.0,\n    \"mean smoothness\": 0.0,\n    \"mean compactness\": 0.0,\n    \"mean concavity\": 0.0,\n    \"mean concave points\": 0.0,\n    \"mean symmetry\": 0.0,\n    \"mean fractal dimension\": 0.0,\n    \"radius error\": 0.0,\n    \"texture error\": 0.0,\n    \"perimeter error\": 0.0,\n    \"area error\": 0.0,\n    \"smoothness error\": 0.0,\n    \"compactness error\": 0.0,\n    \"concavity error\": 0.0,\n    \"concave points error\": 0.0,\n    \"symmetry error\": 0.0,\n    \"fractal dimension error\": 0.0,\n    \"worst radius\": 0.0,\n    \"worst texture\": 0.0,\n    \"worst perimeter\": 0.0,\n    \"worst area\": 0.0,\n    \"worst smoothness\": 0.0,\n    \"worst compactness\": 0.0,\n    \"worst concavity\": 0.0,\n    \"worst concave points\": 0.0,\n    \"worst symmetry\": 0.0,\n    \"worst fractal dimension\": 0.0\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/predict",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "predict"
+              ]
+            },
+            "description": "Template com os **30 campos** e valor `0.0`. Substitua pelos valores da sua amostra PAAF.\n\n| Campo JSON | Descrição |\n|------------|----------|\n| `mean radius` | Raio médio — média das distâncias do centro ao perímetro do núcleo |\n| `mean texture` | Textura média — desvio padrão dos tons de cinza |\n| `mean perimeter` | Perímetro médio do núcleo |\n| `mean area` | Área média do núcleo |\n| `mean smoothness` | Suavidade média — variação local do raio |\n| `mean compactness` | Compacidade média — (perímetro² / área) − 1 |\n| `mean concavity` | Concavidade média — severidade das porções côncavas |\n| `mean concave points` | Pontos côncavos médios |\n| `mean symmetry` | Simetria média do núcleo |\n| `mean fractal dimension` | Dimensão fractal média do contorno |\n| `radius error` | Erro padrão do raio |\n| `texture error` | Erro padrão da textura |\n| `perimeter error` | Erro padrão do perímetro |\n| `area error` | Erro padrão da área |\n| `smoothness error` | Erro padrão da suavidade |\n| `compactness error` | Erro padrão da compacidade |\n| `concavity error` | Erro padrão da concavidade |\n| `concave points error` | Erro padrão dos pontos côncavos |\n| `symmetry error` | Erro padrão da simetria |\n| `fractal dimension error` | Erro padrão da dimensão fractal |\n| `worst radius` | Pior raio — média dos 3 maiores valores |\n| `worst texture` | Pior textura — média dos 3 maiores valores |\n| `worst perimeter` | Pior perímetro — média dos 3 maiores valores |\n| `worst area` | Pior área — média dos 3 maiores valores |\n| `worst smoothness` | Pior suavidade — média dos 3 maiores valores |\n| `worst compactness` | Pior compacidade — média dos 3 maiores valores |\n| `worst concavity` | Pior concavidade — média dos 3 maiores valores |\n| `worst concave points` | Pior pontos côncavos — média dos 3 maiores valores |\n| `worst symmetry` | Pior simetria — média dos 3 maiores valores |\n| `worst fractal dimension` | Pior dimensão fractal — média dos 3 maiores valores |"
+          },
+          "response": [
+            {
+              "name": "200 - Exemplo de resposta",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"predicao\": 0,\n  \"label\": \"Benigno\",\n  \"probabilidade_benigno\": 0.9092,\n  \"probabilidade_maligno\": 0.0908\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
