@@ -15,12 +15,14 @@ flowchart TB
     subgraph GA["Otimização offline (ga/)"]
         NB["Tech_Challenge_Breast_Cancer.ipynb\nEDA · baseline"]
         RUN["ga/run_ga_experiments.py\n≥3 experimentos"]
+        NBGA["Tech_Challenge_Fase2_GA_LLM.ipynb\ndemonstração interativa (roda Colab)"]
         REPORTS["reports/*.png, *.csv\nconvergência + comparativo"]
         PKL["models/pipeline_breast_cancer_ga_optimized.pkl\n+ metadata"]
         CSV --> NB
         CSV --> RUN
         RUN --> REPORTS
         RUN --> PKL
+        NBGA -.->|"importa ga/ e llm/,\nnão sobrescreve reports/"| RUN
     end
 
     subgraph Deploy["Container Docker — porta 8000"]
@@ -102,8 +104,9 @@ responde `503` — o `/predict` original nunca é afetado, é uma rota totalment
 | Camada | Arquivo / tecnologia | Responsabilidade |
 |--------|----------------------|------------------|
 | Dados | `breast_cancer_wisconsin.csv` | Dataset UCI/Kaggle com medidas de núcleos celulares |
-| Análise e ML (baseline) | `Tech_Challenge_Breast_Cancer.ipynb` | EDA, comparação de modelos, serialização |
+| Análise e ML (baseline) | `Tech_Challenge_Breast_Cancer.ipynb` | EDA, comparação de modelos, serialização (Fase 1, sem alteração) |
 | Otimização | `ga/` (`search_space.py`, `individual.py`, `operators.py`, `fitness.py`, `genetic_algorithm.py`, `run_ga_experiments.py`) | Algoritmo genético de hiperparâmetros |
+| Demonstração interativa | `Tech_Challenge_Fase2_GA_LLM.ipynb` | Importa `ga/`/`llm/` e roda célula a célula (roda no Colab); não gera os artefatos oficiais, só demonstra |
 | Pipeline | `sklearn` + `joblib` | Imputer → Scaler → Classificador (hiperparâmetros do GA) |
 | LLM | `llm/` (`prompts.py`, `explainer.py`, `evaluation.py`) | Explicação em linguagem natural + avaliação de qualidade |
 | API | `api/main.py`, `api/schemas.py` | Endpoints REST e validação de entrada |

@@ -11,7 +11,8 @@ Continuação da Fase 1 (`ENTREGA_FASE_1.pdf`, mantida intacta em
 
 ```
 desafioFase2/
-├── Tech_Challenge_Breast_Cancer.ipynb   # Notebook (EDA, baseline — herdado da Fase 1)
+├── Tech_Challenge_Breast_Cancer.ipynb   # Notebook (EDA, baseline — herdado da Fase 1, sem alteração)
+├── Tech_Challenge_Fase2_GA_LLM.ipynb    # Notebook novo: GA + LLM de forma interativa (roda Colab)
 ├── breast_cancer_wisconsin.csv          # Dataset
 ├── ga/                                   # Algoritmo genético (hiperparâmetros)
 │   ├── data.py, search_space.py, individual.py
@@ -67,6 +68,25 @@ e `random_forest`, salva:
   servida pela API por padrão
 
 Detalhes da codificação, operadores e fitness: `ARQUITETURA.md` e `RELATORIO_TECNICO.md`.
+
+### Versão interativa (notebook, roda no Colab)
+
+`Tech_Challenge_Fase2_GA_LLM.ipynb` importa os mesmos módulos de `ga/` e `llm/` — não
+duplica a lógica — e roda tudo célula a célula, com os gráficos de convergência inline.
+Não sobrescreve `reports/` nem `models/` (isso é só o `ga/run_ga_experiments.py`
+oficial, acima); serve pra explorar os parâmetros do GA e ver a explicação da LLM na hora.
+
+Local:
+```bash
+jupyter notebook Tech_Challenge_Fase2_GA_LLM.ipynb
+```
+
+Google Colab: abra o notebook direto do GitHub
+(`File → Open notebook → GitHub`, cole a URL deste repositório). A primeira célula
+detecta o Colab, instala o `openai` (única dependência que falta lá — o resto já vem
+pré-instalado) e clona o repositório se a variável `REPO_URL` estiver preenchida com a
+URL deste repo; senão, ela pede pra você subir `ga/`, `llm/`, `models/` e o `.csv`
+manualmente pelo painel de arquivos.
 
 ## 3. LLM — avaliação da qualidade das explicações
 

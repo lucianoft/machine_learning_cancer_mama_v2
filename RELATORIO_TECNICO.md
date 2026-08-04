@@ -210,6 +210,14 @@ Documentação completa e diagramas em **`ARQUITETURA.md`** e imagem em **`docs/
 
 # Fase 2 — Projeto 1: Otimização via Algoritmo Genético + LLM
 
+A lógica reutilizável desta fase vive em `ga/` e `llm/` — os mesmos módulos que
+`api/main.py` importa em produção e que `tests/` cobre com pytest. Além dos scripts
+(`ga/run_ga_experiments.py`, `llm/evaluation.py`, que geraram os resultados oficiais
+abaixo), existe `Tech_Challenge_Fase2_GA_LLM.ipynb`: um notebook que importa esses
+mesmos módulos e roda tudo célula a célula, com os gráficos inline — útil pra explorar
+os parâmetros do GA interativamente (roda local ou no Google Colab). Ele não substitui
+o código em `.py` nem sobrescreve os artefatos oficiais em `reports/`/`models/`.
+
 ## 6. Algoritmo genético
 
 ### 6.1 Codificação (representação de genes)
